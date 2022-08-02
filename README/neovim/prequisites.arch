@@ -1,0 +1,17 @@
+ninja
+libtool
+automake
+cmake
+pkg-config
+gettext
+curl
+zip
+nodejs
+npm
+python-pip
+wget
+curl
+unzip
+tar
+gzip
+ripgrep
