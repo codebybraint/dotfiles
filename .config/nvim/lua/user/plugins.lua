@@ -71,13 +71,14 @@ return packer.startup(function(use)
     use "ray-x/lsp_signature.nvim"
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "RRethy/vim-illuminate"
-    use { "lvimuser/lsp-inlayhints.nvim", branch = "readme" }
+    use { "lvimuser/lsp-inlayhints.nvim"}
 
     -- LSP Languages
     use "b0o/SchemaStore.nvim"
 
     -- Completion
-    use "christianchiarulli/nvim-cmp"
+    -- use "christianchiarulli/nvim-cmp"
+    use "hrsh7th/nvim-cmp" --completion
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
     use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -85,7 +86,7 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-nvim-lsp"
     use "zbirenbaum/copilot-cmp"
-    use { "tzachar/cmp-tabnine", run = "./install.sh" }
+    -- use { "tzachar/cmp-tabnine", run = "./install.sh" , requires = "hrsh7th/nvim-cmp"}
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
     -- Snippet
