@@ -12,11 +12,10 @@ M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 M.setup = function()
   local icons = require "user.icons"
   local signs = {
-
-    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+		{ name = "DiagnosticSignError", text = "" },
+		{ name = "DiagnosticSignWarn", text = "" },
+		{ name = "DiagnosticSignHint", text = "" },
+		{ name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -73,6 +72,15 @@ M.setup = function()
   })
 end
 
+local function lsp_highlight_document(client)
+  -- if client.server_capabilities.document_highlight then
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
+  -- end
+end
 
 local function attach_navic(client, bufnr)
   vim.g.navic_silence = true
@@ -106,6 +114,7 @@ end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
   attach_navic(client, bufnr)
 
   if client.name == "tsserver" then
@@ -113,6 +122,7 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.name == "jdt.ls" then
+    -- TODO: instantiate capabilities in java file later
     vim.lsp.codelens.refresh()
     if JAVA_DAP_ACTIVE then
       require("jdtls").setup_dap { hotcodereplace = "auto" }
@@ -125,7 +135,7 @@ function M.enable_format_on_save()
   vim.cmd [[
     augroup format_on_save
       autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = false }) 
+      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true }) 
     augroup end
   ]]
   vim.notify "Enabled format on save"

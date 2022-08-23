@@ -5,7 +5,7 @@ local options = {
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 0,                        -- so that `` is visible in markdown files
     fileencoding = "utf-8",                  -- the encoding written to a file
-    hlsearch = true,                         -- highlight all matches on previous search pattern
+    hlsearch = false,                         -- highlight all matches on previous search pattern
     ignorecase = true,                       -- ignore case in search patterns
     mouse = "a",                             -- allow the mouse to be used in neovim
     pumheight = 10,                          -- pop up menu height
@@ -24,7 +24,7 @@ local options = {
     expandtab = true,                        -- convert tabs to spaces
     shiftwidth = 4,                          -- the number of spaces inserted for each indentation
     tabstop = 4,                             -- insert 2 spaces for a tab
-    cursorline = true,                       -- highlight the current line
+    --[[ cursorline = true,                       -- highlight the current line ]]
     number = true,                           -- set numbered lines
     laststatus = 3,
     showcmd = true,
@@ -40,9 +40,11 @@ local options = {
     -- colorcolumn = "80",
     colorcolumn = "120",
     -- columns = "100",
-
+    guicursor = "",
+    -- highlight Normal guibg = none,
 }
 
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end
+

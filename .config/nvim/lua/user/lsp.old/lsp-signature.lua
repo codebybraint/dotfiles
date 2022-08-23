@@ -57,3 +57,4 @@ signature.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 -- note: on_attach deprecated
 -- require("lsp_signature").on_attach(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
 signature.on_attach(cfg) -- no need to specify bufnr if you don't use toggle_key
+

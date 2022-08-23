@@ -53,7 +53,7 @@ return packer.startup(function(use)
 
     -- Fuzzy Finder/Telescope
     use "nvim-telescope/telescope.nvim"
-
+    use "tamago324/lir.nvim"
     -- Lua Development
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
     use "nvim-lua/popup.nvim"
@@ -102,7 +102,6 @@ return packer.startup(function(use)
     -- Color Schemes
     use "morhetz/gruvbox"
     use "lunarvim/onedarker.nvim"
-    
 
     -- Icon
     use "kyazdani42/nvim-web-devicons"
@@ -112,6 +111,12 @@ return packer.startup(function(use)
 	
     -- Git
 	use "lewis6991/gitsigns.nvim"
+    
+    -- Debugger
+    use 'mfussenegger/nvim-dap'
+    
+    -- Java
+    use 'mfussenegger/nvim-jdtls'
 
     --Others TODO need to rearrange
     use "windwp/nvim-autopairs"-- Autopairs, integrates with both cmp and treesitter
